@@ -64,43 +64,37 @@
     </header>
     <main></main>
     <footer></footer>
+    <script>
+       let backToTopButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.opacity = '1';
+                backToTopButton.style.transform = 'translateY(0)';
+            } else {
+                backToTopButton.style.opacity = '0';
+                backToTopButton.style.transform = 'translateY(20px)';
+            }
+        });
+ 
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    const hour = new Date().getHours();
+  const greetingElement = document.querySelector('.hero h1');
+  
+  if (hour < 6) {
+    greetingElement.textContent = '夜深了，準備下次旅行吧';
+  } else if (hour < 12) {
+    greetingElement.textContent = '早安！開始新的旅程';
+  } else if (hour < 18) {
+    greetingElement.textContent = '午安！探索世界的美麗';
+  } else {
+    greetingElement.textContent = '晚安！回味今日的美景';
+  }
 </body>
 </html>
 
-css:
-#header {
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #2c5aa0;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-link:hover, .nav-link.active {
-    color: #2c5aa0;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    position: relative;
-}
